@@ -1,34 +1,31 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using SparkAPI.Security;
 
 namespace SparkAPI.Tests
 {
     [TestClass]
     public class UnitTests
     {
+        public ISparkAccessTokenProvider AccessTokenProvider { get; set; }
+
+        [TestInitialize]
+        public void Init()
+        {
+            AccessTokenProvider = new LocalFileSparkAccessTokenProvider(@"C:\Users\Mateusz\AppData\Local\SparkAPI\AccessToken.dat");
+        }
+
         [TestMethod]
         public void GetVariableIntTest()
         {
-            var spark = new Spark("Ozon");
+            var spark = new Spark("Ozon", AccessTokenProvider);
             var timeleft = spark.GetVariableInt("timeleft");
-
-            Debug.WriteLine(timeleft);
-            
         }
 
         [TestMethod]
         public void CallFunctionTest()
         {
-            var spark = new Spark("Ozon");
-            var timeleft = spark.CallFunction("start-ozon", 1.ToString());
-
-            Debug.WriteLine(timeleft);
-
+            var spark = new Spark("Ozon", AccessTokenProvider);
+            spark.CallFunction("start-ozon", 1.ToString());
         }
     }
 }

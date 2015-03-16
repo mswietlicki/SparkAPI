@@ -43,14 +43,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Security\ISparkAccessTokenProvider.cs" />
     <Compile Include="Model\AuthResponse.cs" />
     <Compile Include="Model\FunctionResponse.cs" />
     <Compile Include="Model\CoreInfo.cs" />
     <Compile Include="Model\DeleteResponse.cs" />
     <Compile Include="Model\TokenResponse.cs" />
     <Compile Include="Model\VariableResponse.cs" />
+    <Compile Include="Security\LocalFileSparkAccessTokenProvider.cs" />
     <Compile Include="Spark.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SparkRest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
