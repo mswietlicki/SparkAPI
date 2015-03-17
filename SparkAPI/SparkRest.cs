@@ -16,9 +16,10 @@ namespace SparkAPI
         public T Execute<T>(IRestRequest request, string login = null, string password = null) where T : new()
         {
             var client = new RestClient(BaseUrl);
-            if (login != null && password != null)
-                client.Authenticator = new HttpBasicAuthenticator(login, password);
-            else
+            //if (login != null && password != null)
+            //    client.Authenticator = new HttpBasicAuthenticator(login, password);
+            //else
+            if (!string.IsNullOrEmpty(AccessToken))
                 request.AddParameter("access_token", AccessToken);
 
             var response = client.Execute<T>(request);

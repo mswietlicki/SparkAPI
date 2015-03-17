@@ -14,4 +14,12 @@ namespace SparkAPI.Security
             return File.ReadAllText(FileName);
         }
     }
+
+    //public class RegistrySparkAccessTokenProvider : ISparkAccessTokenProvider
+    //{
+    //    public string GetAccessToken()
+    //    {
+    //        return File.ReadAllText(FileName);
+    //    }
+    //}
 }

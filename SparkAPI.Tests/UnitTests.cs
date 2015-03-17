@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SparkAPI.Security;
+using System;
 
 namespace SparkAPI.Tests
 {
@@ -26,6 +27,13 @@ namespace SparkAPI.Tests
         {
             var spark = new Spark("Ozon", AccessTokenProvider);
             spark.CallFunction("start-ozon", 1.ToString());
+        }
+
+        [TestMethod]
+        public void CreateAccessTokenTest()
+        {
+            var token = Spark.CreateAccessToken("", "");
+            Console.WriteLine(token);
         }
     }
 }
